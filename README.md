@@ -56,42 +56,50 @@ SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
 - **Convert NSString to NSData**
 
 ```objc
-    NSData *data = [convertNSStringToNSData:@"String data"];
+    NSData *data = [commonSDK convertNSStringToNSData:@"String data"];
 ```
 
 - Convert NSData to NSString
 
 ```objc
-    NSString *str = [convertNSDataToNSString:data];
+    NSString *str = [commonSDK convertNSDataToNSString:data];
 ```
 
 - **Convert NSString to NSDictionary**
 
 ```objc
-    NSDictionary *ditionary = convertNSStringToNSDictionary:@"{"id":"123","name":"SHCommon"}";
+    NSDictionary *ditionary = [commonSDK convertNSStringToNSDictionary:@"{"id":"123","name":"SHCommon"}"];
 ```
 
 - **Convert NSDictionary to NSString**
 
 ```objc
-    NSString *str = convertNSDictionaryToNSString:ditionary;
+    NSString *str = [commonSDK convertNSDictionaryToNSString:ditionary];
 ```
 
 - **Send asynchronous request to server url**
 
 ```objc
-    requestAsynchronous:(NSString *)url
-                 withMethod:(APIMethod)method
-                 withHeader:(NSDictionary<NSString *, NSString *> *)header
-                 withParams:(NSData *)params
-             completeHandle:(void (^)(NSURLResponse *urlResponse, NSData *data, NSError *error))callback ;
+    - (void (^)(NSURLResponse *urlResponse, NSData *data, NSError *error))callback{
+    }
+
+    NSDictionary<NSString *,NSString *> *header;
+    NSData *params;
+
+    [commonSDK requestAsynchronous:@"https://url"
+        withMethod:APIMethodGet
+        withHeader:header
+        withParams:params
+        completeHandle:callback];
 ```
 
 - **Send synchronous request to server url**
 
 ```objc
-    (NSData *)requestSynchronous:(NSString *)url
-                    withMethod:(APIMethod)method
-                    withHeader:(NSDictionary<NSString *, NSString *> *)header
-                    withParams:(NSData *)params;
+    NSDictionary<NSString *,NSString *> *header;
+    NSData *params;
+    NSData *data = [commonSDK requestSynchronous:@"http://url"
+        withMethod:APIMethodGet
+        withHeader:dictionary
+        withParams:params];
 ```

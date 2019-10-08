@@ -32,7 +32,7 @@ SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
 - **Get divice name**
 
 ```objc
-    NSString *deviceID = [commonSDK deviceName];
+    NSString *deviceName = [commonSDK deviceName];
 ```
 
 - **Get platform name**

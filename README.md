@@ -100,6 +100,6 @@ SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
     NSData *params;
     NSData *data = [commonSDK requestSynchronous:@"http://url"
         withMethod:APIMethodGet
-        withHeader:dictionary
+        withHeader:header
         withParams:params];
 ```

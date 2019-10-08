@@ -4,7 +4,9 @@
 
 ## Implementation
 
-pod 'SHCommonSDK', '~> 0.0.2'
+In your podfile add the following command
+
+pod 'SHCommonSDK'
 
 ## All method description
 

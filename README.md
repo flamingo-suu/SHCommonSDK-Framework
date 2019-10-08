@@ -78,17 +78,14 @@ SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
 - **Send asynchronous request to server url**
 
 ```objc
-    - (void (^)(NSURLResponse *urlResponse, NSData *data, NSError *error))callback{
-    }
-
     NSDictionary<NSString *,NSString *> *header;
     NSData *params;
-
     [commonSDK requestAsynchronous:@"https://url"
         withMethod:APIMethodGet
         withHeader:header
         withParams:params
         completeHandle:callback];
+    // Call back has type: (void) void(^)
 ```
 
 - **Send synchronous request to server url**

@@ -6,7 +6,9 @@
 
 In your podfile add the following command
 
+```ruby
 pod 'SHCommonSDK'
+```
 
 ## All method description
 

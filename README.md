@@ -51,19 +51,13 @@ SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
     NSBundle *bundle = [commonSDK bundleResourceByName:@"The name];
 ```
 
-- **Request from server using synchronous**
-
-```objc
-    NSBundle *bundle = [commonSDK bundleResourceByName:@"The name];
-```
-
 - **Convert NSString to NSData**
 
 ```objc
     NSData *data = [commonSDK convertNSStringToNSData:@"String data"];
 ```
 
-- Convert NSData to NSString
+- **Convert NSData to NSString**
 
 ```objc
     NSString *str = [commonSDK convertNSDataToNSString:data];

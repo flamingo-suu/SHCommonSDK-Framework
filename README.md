@@ -17,7 +17,7 @@ pod 'SHCommonSDK'
 - platformName: Get the ios version
 - bundleResourceByName: Get the bundle by name
 - requestSynchronous: Send a synchronous request to server
-- requestAsynchronous: Send a asynchronous request to server
+- requestAsynchronous: Send an asynchronous request to server
 
 ## How to use
 

@@ -12,43 +12,47 @@ pod 'SHCommonSDK'
 
 ## All method description
 
-- deviveID: Get the device identify
-- deviceName: Get the device name
-- platformName: Get the ios version
-- bundleResourceByName: Get the bundle by name
-- requestSynchronous: Send a synchronous request to server
-- requestAsynchronous: Send an asynchronous request to server
+- getDeviveUID: Get the device identify
+- getDeviceName: Get the device name
+- getPlatformName: Get the ios version
+- getBundleResourceByName: Get the bundle by name
+- convertNSStringToNSData: Convert a NSString to NSData
+- convertNSDataToNSString: Convert a NSData to NSString
+- convertNSStringToNSDictionary: Convert NSString (JSON) to NSDictionary
+- convertNSDictionaryToNSString: Convert NSDictionary to NSString(JSON)
+- requestSynchronous: Send a synchronous request to server to get data
+- requestAsynchronous: Send an asynchronous request to server to get data
 
 ## How to use
 
-> **First create SHCommonSDK object**
+- **Get unique device identify**
 
 ```objc
-SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
-```
-
-- **Get device identify**
-
-```objc
-    NSString *deviceID = [commonSDK deviceID];
+    NSString *deviceUID = [SHCommonSDK getDeviceUID];
 ```
 
 - **Get divice name**
 
 ```objc
-    NSString *deviceName = [commonSDK deviceName];
+    NSString *deviceName = [SHCommonSDK getDeviceName];
 ```
 
 - **Get platform name**
 
 ```objc
-    NSString *platformName = [commonSDK platformName];
+    NSString *platformName = [SHCommonSDK getPlatformName];
 ```
 
-- **Get bundel by name**
+- **Get bundle by name**
 
 ```objc
-    NSBundle *bundle = [commonSDK bundleResourceByName:@"The name];
+    NSBundle *bundle = [SHCommonSDK getBundleResourceByName:@"Main"];
+```
+
+## All other method need to create SHCommonSDK object
+
+```objc
+    SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
 ```
 
 - **Convert NSString to NSData**
@@ -75,6 +79,17 @@ SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
     NSString *str = [commonSDK convertNSDictionaryToNSString:ditionary];
 ```
 
+- **Send synchronous request to server url**
+
+```objc
+    NSDictionary<NSString *,NSString *> *header;
+    NSData *params;
+    NSData *data = [commonSDK requestSynchronous:@"http://url"
+        withMethod:APIMethodGet
+        withHeader:header
+        withParams:params];
+```
+
 - **Send asynchronous request to server url**
 
 ```objc
@@ -86,15 +101,4 @@ SHCommonSDK *commonSDK = [[SHCommonSDK alloc] init];
         withParams:params
         completeHandle:callback];
     // Call back has type: (void) void(^)
-```
-
-- **Send synchronous request to server url**
-
-```objc
-    NSDictionary<NSString *,NSString *> *header;
-    NSData *params;
-    NSData *data = [commonSDK requestSynchronous:@"http://url"
-        withMethod:APIMethodGet
-        withHeader:header
-        withParams:params];
 ```

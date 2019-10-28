@@ -12,16 +12,16 @@ pod 'SHCommonSDK'
 
 ## All method description
 
-- getDeviveUID: Get the device identify
-- getDeviceName: Get the device name
-- getPlatformName: Get the ios version
-- getBundleResourceByName: Get the bundle by name
-- convertNSStringToNSData: Convert a NSString to NSData
-- convertNSDataToNSString: Convert a NSData to NSString
-- convertNSStringToNSDictionary: Convert NSString (JSON) to NSDictionary
-- convertNSDictionaryToNSString: Convert NSDictionary to NSString(JSON)
-- requestSynchronous: Send a synchronous request to server to get data
-- requestAsynchronous: Send an asynchronous request to server to get data
+- `getDeviveUID`: Get the device identify
+- `getDeviceName`: Get the device name
+- `getPlatformName`: Get the ios version
+- `getBundleResourceByName`: Get the bundle by name
+- `convertNSStringToNSData`: Convert a NSString to NSData
+- `convertNSDataToNSString`: Convert a NSData to NSString
+- `convertNSStringToNSDictionary`: Convert NSString (JSON) to NSDictionary
+- `convertNSDictionaryToNSString`: Convert NSDictionary to NSString(JSON)
+- `requestSynchronous`: Send a synchronous request to server to get data
+- `requestAsynchronous`: Send an asynchronous request to server to get data
 
 ## How to use
 
@@ -70,7 +70,7 @@ pod 'SHCommonSDK'
 - **Convert NSString to NSDictionary**
 
 ```objc
-    NSDictionary *ditionary = [commonSDK convertNSStringToNSDictionary:@"{"id":"123","name":"SHCommon"}"];
+    NSDictionary *ditionary = [commonSDK convertNSStringToNSDictionary:@"{\"ID\":{\"Content\":268,\"type\":\"text\"}"];
 ```
 
 - **Convert NSDictionary to NSString**
@@ -82,8 +82,8 @@ pod 'SHCommonSDK'
 - **Send synchronous request to server url**
 
 ```objc
-    NSDictionary<NSString *,NSString *> *header;
-    NSData *params;
+    NSDictionary<NSString *,NSString *> *header = [commonSDK convertNSStringToNSDictionary:@"{\"ID\":{\"Content\":268,\"type\":\"text\"}"];
+    NSData *params = [commonSDK convertNSStringToNSDictionary:@"DATA"];
     NSData *data = [commonSDK requestSynchronous:@"http://url"
         withMethod:APIMethodGet
         withHeader:header
@@ -93,12 +93,17 @@ pod 'SHCommonSDK'
 - **Send asynchronous request to server url**
 
 ```objc
-    NSDictionary<NSString *,NSString *> *header;
-    NSData *params;
+        NSDictionary<NSString *,NSString *> *header = [commonSDK convertNSStringToNSDictionary:@"{\"ID\":{\"Content\":268,\"type\":\"text\"}"];
+    NSData *params = [commonSDK convertNSStringToNSDictionary:@"DATA"];
     [commonSDK requestAsynchronous:@"https://url"
         withMethod:APIMethodGet
         withHeader:header
         withParams:params
         completeHandle:callback];
-    // Call back has type: (void) void(^)
+    // callback example
+    // - (void (^)(NSURLResponse *, NSData *, NSError *))callback {
+    //      return ^(NSURLResponse *urlResponse, NSData *data, NSError *error) {
+    //
+    //};
+}
 ```

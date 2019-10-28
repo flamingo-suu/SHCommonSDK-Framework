@@ -93,7 +93,7 @@ pod 'SHCommonSDK'
 - **Send asynchronous request to server url**
 
 ```objc
-        NSDictionary<NSString *,NSString *> *header = [commonSDK convertNSStringToNSDictionary:@"{\"ID\":{\"Content\":268,\"type\":\"text\"}"];
+    NSDictionary<NSString *,NSString *> *header = [commonSDK convertNSStringToNSDictionary:@"{\"ID\":{\"Content\":268,\"type\":\"text\"}"];
     NSData *params = [commonSDK convertNSStringToNSDictionary:@"DATA"];
     [commonSDK requestAsynchronous:@"https://url"
         withMethod:APIMethodGet
